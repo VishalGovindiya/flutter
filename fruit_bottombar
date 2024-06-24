@@ -1,0 +1,35 @@
+import 'package:flutter/material.dart';
+import 'package:helloworld/Fruit_App_Gridview/homescreen.dart';
+import 'package:helloworld/Fruit_App_listview/fruitHomeScreen.dart';
+
+class FruitBottomBar extends StatefulWidget {
+  const FruitBottomBar({Key? key}) : super(key: key);
+
+  @override
+  State<FruitBottomBar> createState() => _FruitBottomBarState();
+}
+
+class _FruitBottomBarState extends State<FruitBottomBar> {
+  List screen = [FruitHomeScreen(), FruitScreen()];
+
+  int silectindex = 0;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: screen[silectindex],
+      bottomNavigationBar: BottomNavigationBar(
+          currentIndex: silectindex,
+          selectedItemColor: Colors.orange,
+          unselectedItemColor: Colors.grey,
+          onTap: (value) {
+            setState(() {
+              silectindex = value;
+            });
+          },
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+            BottomNavigationBarItem(icon: Icon(Icons.more), label: "More"),
+          ]),
+    );
+  }
+}
